@@ -24,6 +24,12 @@ function createMeteors() {
 	}, 3000);
 }
 
+	// disable right click
+	document.addEventListener("contextmenu",
+		event => {
+			event.preventDefault();
+	})
+
 // createMeteors() function will run every 6s;
 setInterval(createMeteors, 6000);
 
