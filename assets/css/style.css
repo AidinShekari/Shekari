@@ -139,8 +139,6 @@ header nav a:hover {
 	margin: 2.2em 1em;
 	letter-spacing: 4px;
 	word-spacing: 5px;
-	animation: flip 2s infinite;
- 	animation-delay: calc(.2s * var(--i))
 }
 
 .tagline {
