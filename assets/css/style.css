@@ -131,6 +131,8 @@ header nav a:hover {
 	white-space: nowrap;
 	text-align: center;
 	color: #d8d6d6;
+	animation: flip 7s infinite;
+ 	animation-delay: calc(.2s * var(--i))
 }
 
 .intro-content h1 {
