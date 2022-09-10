@@ -124,6 +124,7 @@ header nav a:hover {
 }
 
 .intro-content {
+	animation: slide-up 2s;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -139,6 +140,18 @@ header nav a:hover {
 	margin: 2.2em 1em;
 	letter-spacing: 4px;
 	word-spacing: 5px;
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 0.3;
+		line-height: 300px;
+	}
+
+	to {
+		opacity: 1;
+		line-height: 4px;
+	}
 }
 
 .tagline {
@@ -269,12 +282,7 @@ header nav a:hover {
 		display: hidden;
 		opacity: 0;
 	}
-	
-	.stop-scrolling {
-  		height: 100%;
-  		overflow: hidden;
-	}
-	
+
 	@keyframes shower {
 		from {
 			transform: translateY(-50%);
