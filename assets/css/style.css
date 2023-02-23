@@ -257,11 +257,11 @@ header nav a:hover {
 	}
 
 	.cursor-outer {
-		display: hidden;
+		display: block;
 	}
 
 	.cursor-inner {
-		display: hidden;
+		display: block;
 	}
 	
 	.contact {
