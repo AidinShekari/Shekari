@@ -256,10 +256,14 @@ header nav a:hover {
 		size: 0.5em;
 	}
 
-	[class^="cursor"] {
+	.cursor-outer {
 		display: hidden;
 	}
 
+	.cursor-inner {
+		display: hidden;
+	}
+	
 	.contact {
 		display: flex;
 		flex-wrap: wrap;
