@@ -256,7 +256,7 @@ header nav a:hover {
 		size: 0.5em;
 	}
 
-	[class="cursor"] {
+	[class^="cursor"] {
 		display: none;
 	}
 
