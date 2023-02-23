@@ -256,13 +256,9 @@ header nav a:hover {
 		size: 0.5em;
 	}
 
-	.cursor-outer {
+	[class='cursor'] {
 		display: block;
-	}
-
-	.cursor-inner {
-		display: block;
-	}
+	  }
 	
 	.contact {
 		display: flex;
