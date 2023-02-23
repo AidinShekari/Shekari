@@ -258,8 +258,12 @@ header nav a:hover {
 
 	.cursor-outer {
 		visibility: hidden ;
-	  }
+	}
 	
+	.cursor-inner {
+		visibility: hidden ;
+	}
+
 	.contact {
 		display: flex;
 		flex-wrap: wrap;
