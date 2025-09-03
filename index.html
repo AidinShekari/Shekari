@@ -1,106 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="description"
-			content=" - About Aidin Shekari"
-		/>
-		<meta
-			name="keywords"
-			content="Github, Aidin Shekari"
-		/>
-		<meta name="author" content="Aidin Shekari" />
-		<meta name="theme-color" content="#f4f4f4" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<title>Aidin Shekari | About</title>
-		
-		<link rel="stylesheet" href="assets/css/style.css" />
-		<link rel="shortcut icon" type="image/png" href="./favicon.png" />
-		
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-		/>
-	</head>
-	<body>
-		<header>
-			<section class="animated-area"></section>
-			<nav>
-				<li>
-					<span class="logo">&lt;AS/&gt;</span>
-				</li>
-			</nav>
-			<div class="intro-content">
-				<h1>- Aidin Shekari -</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Aidin Shekari - Personal Portfolio and Links" />
+  <meta name="keywords" content="Github, Aidin Shekari, Portfolio, Blog, Developer" />
+  <meta name="author" content="Aidin Shekari" />
+  <meta name="theme-color" content="#1E1E1E" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-			<ul class="contact">
-				<li style="--i: 1;">
-					<a href="mailto:personal@shekaari.ir" class="icon" target="_blank" alt="Aidin Shekari E-Mail" rel="noopener" rel="noreferrer" aria-label="E-mail Aidin Shekari">
-						<i class="fa fa-envelope" aria-hidden="true"></i>
-					</a>
-					<p class="desc hide">E-Mail</p>
-				</li>
-				<li style="--i: 2;">
-					<a href="https://github.com/AidinShekari" class="icon" target="_blank" alt="Aidin Shekari GitHub" rel="noopener" rel="noreferrer" aria-label="GitHub Aidin Shekari">
-						<i class="fa fa-github" aria-hidden="true"></i>
-					</a>
-					<p class="desc hide">GitHub</p>
-				</li>
-				<li style="--i: 3;">
-					<a href="https://open.spotify.com/user/31e6ku7iy77z2dyxgpqhndjblopq?si=1933fbcd886a469d" class="icon" target="_blank" alt="Aidin Shekari Spotify" rel="noopener" rel="noreferrer" aria-label="Spotify Aidin Shekari">
-						<i class="fa fa-spotify" aria-hidden="true"></i>
-					</a>
-					<p class="desc hide">Spotify</p>
-				</li>
-				<li style="--i: 4;">
-					<a href="https://t.me/Ai_Shekari" class="icon" target="_blank" alt="Aidin Shekari Telegram" rel="noopener" rel="noreferrer" aria-label="Telegram Aidin Shekari">
-						<i class="fa fa-telegram" aria-hidden="true"></i>
-					</a>
-					<p class="desc hide">Telegram</p>
-				</li>
-				<li style="--i: 5;">
-					<a href="https://www.linkedin.com/in/Aidin-Shekari/" class="icon" target="_blank" alt="Aidin Shekari Linkedin" rel="noopener" rel="noreferrer" aria-label="Linkedin Aidin Shekari">
-						<i class="fa fa-linkedin" aria-hidden="true"></i>
-					</a>
-					<p class="desc hide">Linkedin</p>
-				</li>
-				<li style="--i: 6;">
-					<a href="https://instagram.com/Ai_.Shekari" class="icon" target="_blank" alt="Aidin Shekari Instagram" rel="noopener" rel="noreferrer" aria-label="Instagram Aidin Shekari">
-						<i class="fa fa-instagram" aria-hidden="true"></i>
-					</a>
-					<p class="desc hide">Instagram</p>
-				</li>
-			</ul>
-				<p class="tagline">
-					come, let's figure this out
-					<a
-						href="mailto:personal@shekaari.ir"
-						alt="Aidin Shekari E-Mail"
-						target="_blank"
-						rel="noopener"
-						rel="noreferrer"
-						aria-label="E-Mail Aidin Shekari"
-					>
-						together</a>.
-				</p>
-			</div>
-			<div class="cursor-outer"></div>
-			<div class="cursor-inner"></div>
-			<script>
-				const cursor = document.querySelector(".cursor-inner");
-				const cursor2 = document.querySelector(".cursor-outer");
-				document.addEventListener("mousemove", e=>{
-					cursor.style.top = e.pageY + "px";
-					cursor.style.left = e.pageX + "px";
- 
-					cursor2.style.top = e.pageY + "px";
-					cursor2.style.left = e.pageX + "px";
-				})
-			</script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-		</header>
-		<script src="assets/js/meteor.js"></script>
-	</body>
+  <title>Aidin Shekari | About</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</head>
+<body>
+  <div class="animated-area"></div>
+
+  <main class="profile-card">
+    <section class="profile-box">
+      <img src="./shekari.jpg" alt="Aidin Shekari" class="profile-avatar"/>
+      <div class="bio">
+        <h1 class="profile-name">Aidin Shekari</h1>
+        <p class="profile-role">☁️ Software Engineer , Creative Director , Maybe Psycho</p>
+        <p class="profile-tagline">come, let's figure this out together.</p>
+      </div>
+
+      <!-- Socials BELOW bio -->
+      <div class="social-bar">
+        <a href="https://github.com/AidinShekari" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="https://blog.shekari.me" target="_blank"><i class="fa fa-rss"></i></a>
+        <a href="https://www.linkedin.com/in/Aidin-Shekari/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="mailto:personal@shekaari.ir" target="_blank"><i class="fa fa-envelope"></i></a>
+        <a href="https://t.me/Ai_Shekari" target="_blank"><i class="fa fa-telegram"></i></a>
+        <a href="https://open.spotify.com/user/31e6ku7iy77z2dyxgpqhndjblopq" target="_blank"><i class="fa fa-spotify"></i></a>
+        <a href="https://instagram.com/Ai_.Shekari" target="_blank"><i class="fa fa-instagram"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-outer"></div>
+  <div class="cursor-inner"></div>
+  <script>
+    const cursor = document.querySelector(".cursor-inner");
+    const cursor2 = document.querySelector(".cursor-outer");
+    document.addEventListener("mousemove", e=>{
+      cursor.style.top = e.pageY + "px";
+      cursor.style.left = e.pageX + "px";
+      cursor2.style.top = e.pageY + "px";
+      cursor2.style.left = e.pageX + "px";
+    })
+  </script>
+</body>
 </html>
