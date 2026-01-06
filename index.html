@@ -5,7 +5,7 @@
   <meta name="description" content="Aidin Shekari - Personal Portfolio and Links" />
   <meta name="keywords" content="Github, Aidin Shekari, Portfolio, Blog, Developer" />
   <meta name="author" content="Aidin Shekari" />
-  <meta name="theme-color" content="#1E1E1E" />
+  <meta name="theme-color" content="#000000" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Aidin Shekari | About</title>
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;600&display=swap");
 
     * {
       margin: 0;
@@ -24,8 +24,8 @@
 
     body {
       font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background: linear-gradient(135deg, #0e0e0e, #1c1c1c);
-      color: #E0E0E0;
+      background: #000000;
+      color: #D7F5FF;
       display: grid;
       place-items: center;
       min-height: 100vh;
@@ -39,39 +39,279 @@
       color: #ffffff;
     }
 
-    /* --- Profile Card --- */
+    /* --- Electronics / Control Systems Background --- */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background:
+        radial-gradient(820px 520px at 18% 12%, rgba(255, 255, 255, 0.03), transparent 62%),
+        radial-gradient(720px 520px at 82% 18%, rgba(255, 255, 255, 0.025), transparent 62%),
+        radial-gradient(900px 700px at 50% 92%, rgba(255, 255, 255, 0.02), transparent 68%),
+        linear-gradient(180deg, #000000, #0a0a0a 55%, #000000);
+    }
+
+    .bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        /* scope grid */
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 26px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 26px),
+        /* thick grid */
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0 1px, transparent 1px 130px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.10) 0 1px, transparent 1px 130px);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      filter: blur(0px);
+    }
+
+    .bg::after {
+      content: "";
+      position: absolute;
+      inset: -40% 0;
+      background:
+        linear-gradient(180deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.04) 35%,
+          rgba(255, 255, 255, 0.08) 50%,
+          rgba(255, 255, 255, 0.04) 65%,
+          transparent 100%);
+      transform: translateY(-60%);
+      animation: scanline 7.5s linear infinite;
+      opacity: 0.5;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    @keyframes scanline {
+      0% { transform: translateY(-60%); }
+      100% { transform: translateY(60%); }
+    }
+
+    .bg-nodes { position: absolute; inset: 0; }
+
+    .bg-wires {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.05));
+    }
+
+    .wire {
+      fill: none;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+
+    .wire.base {
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 1.5;
+      opacity: 0.9;
+    }
+
+    .wire.trace {
+      stroke: rgba(255, 255, 255, 0.18);
+      stroke-width: 2;
+      opacity: 1;
+    }
+
+    .wire.signal {
+      stroke: rgba(255, 255, 255, 0.45);
+      stroke-width: 2.5;
+      stroke-dasharray: 4 18;
+      animation: signalFlow 2.8s linear infinite;
+      opacity: 0.9;
+    }
+
+    .wire.signal.slow { animation-duration: 4.5s; opacity: 0.5; }
+    .wire.signal.fast { animation-duration: 1.6s; opacity: 1; }
+
+    @keyframes signalFlow {
+      to { stroke-dashoffset: -180; }
+    }
+
+    .wire-dot {
+      fill: rgba(255, 255, 255, 0.5);
+      opacity: 0.85;
+    }
+
+    .motor circle.wire.base {
+      fill: rgba(0, 0, 0, 0.5);
+      stroke-width: 2;
+    }
+
+    .motor circle.wire.trace {
+      fill: rgba(255, 255, 255, 0.05);
+      stroke-width: 1.5;
+    }
+
+    .motor line {
+      stroke-width: 2;
+    }
+    .node {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+      opacity: 0.5;
+      animation: nodePulse 3.2s ease-in-out infinite;
+    }
+
+    .node::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.35; }
+      50% { transform: scale(1.25); opacity: 0.75; }
+    }
+
+    /* --- Instrument Panel Card --- */
     .profile-card {
-      max-width: 680px;
+      max-width: 760px;
       width: 100%;
       z-index: 10;
-      animation: fadeInCard 1s ease-out forwards;
+      animation: fadeInCard 0.9s ease-out forwards;
       opacity: 0;
     }
 
     @keyframes fadeInCard {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Apple Glassmorphic Profile Box --- */
     .profile-box {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 28px;
-      padding: 2.5rem 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(22px) saturate(180%);
-      -webkit-backdrop-filter: blur(22px) saturate(180%);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 2.4rem 2rem 2rem;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 12px 50px rgba(0, 0, 0, 0.65),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      overflow: hidden;
+    }
+
+    .profile-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 42%),
+        linear-gradient(300deg, rgba(255, 255, 255, 0.04), transparent 44%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .profile-box::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      opacity: 0.6;
+      pointer-events: none;
     }
 
     .profile-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.65);
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow:
+        0 16px 65px rgba(0, 0, 0, 0.7),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .status-strip {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: rgba(215, 245, 255, 0.86);
+      position: relative;
+      z-index: 1;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      white-space: nowrap;
+    }
+
+    .led {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+      animation: ledBlink 1.6s ease-in-out infinite;
+    }
+
+    @keyframes ledBlink {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
+    }
+
+    .meters {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1;
+    }
+
+    .meter {
+      width: 14px;
+      height: 8px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meter::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.0));
+      transform: translateX(-120%);
+      animation: meterSweep 2.2s ease-in-out infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes meterSweep {
+      0% { transform: translateX(-120%); }
+      50% { transform: translateX(120%); }
+      100% { transform: translateX(120%); }
     }
 
     /* Avatar */
@@ -81,7 +321,10 @@
       border-radius: 50%;
       margin-bottom: 1.5rem;
       transition: transform 0.3s ease, border-color 0.3s ease;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 1;
     }
 
     .profile-avatar:hover {
@@ -93,23 +336,31 @@
     .profile-name {
       font-size: 2.2rem;
       font-weight: 600;
-      color: #fff;
+      color: rgba(235, 255, 252, 0.98);
       margin-bottom: 0.3rem;
       letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
     }
 
     .profile-role {
       font-size: 1rem;
-      color: #e0e0e0;
+      color: rgba(215, 245, 255, 0.85);
       margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 1;
     }
 
     .profile-tagline {
       font-size: 0.95rem;
       font-style: italic;
-      color: #b0b0b0;
+      color: rgba(215, 245, 255, 0.68);
       margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
+
+
 
     /* --- Social Bar (below bio) --- */
     .social-bar {
@@ -118,57 +369,48 @@
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .social-bar a {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      color: #e0e0e0;
-      font-size: 1.3rem;
+      background:
+        radial-gradient(18px 18px at 35% 35%, rgba(255, 255, 255, 0.12), transparent 55%),
+        rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.45rem;
       transition: all 0.25s ease;
       backdrop-filter: blur(14px) saturate(180%);
       -webkit-backdrop-filter: blur(14px) saturate(180%);
-      border: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 10px 24px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
       text-decoration: none;
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.1);
     }
 
     .social-bar a:hover {
-      background: rgba(255, 255, 255, 0.25);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.98);
       transform: scale(1.15);
-      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 26px rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
-    /* --- Animated Background --- */
-    .animated-area {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #121212;
-      overflow: hidden;
-      z-index: -1;
+    .social-bar a:focus {
+      outline: none;
     }
 
-    .animated-area .star {
-      background: #fff;
-      position: absolute;
-      border-radius: 50%;
-      box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.2);
-      animation: twinkle 5s ease-in-out infinite;
-      opacity: 0;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 0.35; }
+    .social-bar a:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.4);
+      outline-offset: 4px;
     }
 
     /* --- Custom Cursor --- */
@@ -186,19 +428,39 @@
     .cursor-outer {
       width: 30px;
       height: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .cursor-inner {
       width: 6px;
       height: 6px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
     }
 
-    a:hover ~ .cursor-outer, .profile-avatar:hover ~ .cursor-outer {
-      width: 50px;
-      height: 50px;
-      border-color: rgba(255, 255, 255, 0.8);
+    a:hover ~ .cursor-outer,
+    .profile-avatar:hover ~ .cursor-outer,
+    .profile-box:hover ~ .cursor-outer {
+      width: 52px;
+      height: 52px;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* --- Reduced motion / accessibility --- */
+    @media (prefers-reduced-motion: reduce) {
+      .bg::after,
+      .profile-card,
+      .meter::after,
+      .node,
+      .led,
+      .wire.signal {
+        animation: none !important;
+      }
+      body { cursor: default; }
+      .cursor-outer, .cursor-inner { display: none; }
     }
 
     /* --- Responsive --- */
@@ -210,10 +472,82 @@
   </style>
 </head>
 <body>
-  <div class="animated-area"></div>
+  <div class="bg" aria-hidden="true">
+    <svg class="bg-wires" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+      <!-- PCB-style angular traces (base) -->
+      <path class="wire base" d="M-20,80 L120,80 L140,100 L280,100 L300,80 L460,80 L480,100 L620,100 L640,80 L800,80 L820,100 L1020,100" />
+      <path class="wire base" d="M-20,180 L80,180 L100,200 L200,200 L220,180 L380,180 L400,200 L520,200 L540,180 L700,180 L720,200 L860,200 L880,180 L1020,180" />
+      <path class="wire base" d="M-20,520 L160,520 L180,500 L340,500 L360,520 L520,520 L540,500 L700,500 L720,520 L1020,520" />
+      <path class="wire base" d="M80,0 L80,120 L100,140 L100,280 L120,300 L120,420 L100,440 L100,600" />
+      <path class="wire base" d="M920,0 L920,140 L900,160 L900,320 L920,340 L920,480 L900,500 L900,600" />
+
+      <!-- Copper traces -->
+      <path class="wire trace" d="M-20,280 L180,280 L200,260 L400,260 L420,280 L580,280 L600,260 L780,260 L800,280 L1020,280" />
+      <path class="wire trace" d="M-20,380 L140,380 L160,360 L320,360 L340,380 L500,380 L520,360 L680,360 L700,380 L860,380 L880,360 L1020,360" />
+      <path class="wire trace" d="M500,0 L500,160 L480,180 L480,340 L500,360 L500,440 L480,460 L480,600" />
+
+      <!-- Signal pulses (animated) -->
+      <path class="wire signal fast" d="M-20,280 L180,280 L200,260 L400,260 L420,280 L580,280 L600,260 L780,260 L800,280 L1020,280" />
+      <path class="wire signal" d="M-20,380 L140,380 L160,360 L320,360 L340,380 L500,380 L520,360 L680,360 L700,380 L860,380 L880,360 L1020,360" />
+      <path class="wire signal slow" d="M500,0 L500,160 L480,180 L480,340 L500,360 L500,440 L480,460 L480,600" />
+      <path class="wire signal" d="M80,0 L80,120 L100,140 L100,280 L120,300 L120,420 L100,440 L100,600" />
+      <path class="wire signal fast" d="M920,0 L920,140 L900,160 L900,320 L920,340 L920,480 L900,500 L900,600" />
+
+      <!-- IC / chip outlines -->
+      <rect class="wire base" x="240" y="130" width="60" height="40" rx="4" />
+      <rect class="wire base" x="680" y="240" width="50" height="50" rx="4" />
+      <rect class="wire base" x="440" y="400" width="70" height="35" rx="4" />
+
+      <!-- Junction nodes -->
+      <circle class="wire-dot" cx="140" cy="100" r="4" />
+      <circle class="wire-dot" cx="300" cy="80" r="4" />
+      <circle class="wire-dot" cx="480" cy="100" r="4" />
+      <circle class="wire-dot" cx="200" cy="260" r="4" />
+      <circle class="wire-dot" cx="420" cy="280" r="4" />
+      <circle class="wire-dot" cx="600" cy="260" r="4" />
+      <circle class="wire-dot" cx="160" cy="360" r="4" />
+      <circle class="wire-dot" cx="340" cy="380" r="4" />
+      <circle class="wire-dot" cx="520" cy="360" r="4" />
+      <circle class="wire-dot" cx="700" cy="380" r="4" />
+      <circle class="wire-dot" cx="100" cy="140" r="4" />
+      <circle class="wire-dot" cx="500" cy="160" r="4" />
+      <circle class="wire-dot" cx="920" cy="340" r="4" />
+
+      <!-- Servo / motor symbols -->
+      <g class="motor" transform="translate(820,420)">
+        <circle class="wire base" cx="0" cy="0" r="22" />
+        <circle class="wire trace" cx="0" cy="0" r="14" />
+        <line class="wire signal fast" x1="-10" y1="0" x2="10" y2="0" />
+        <line class="wire signal fast" x1="0" y1="-10" x2="0" y2="10" />
+      </g>
+      <g class="motor" transform="translate(160,420)">
+        <circle class="wire base" cx="0" cy="0" r="22" />
+        <circle class="wire trace" cx="0" cy="0" r="14" />
+        <line class="wire signal" x1="-10" y1="0" x2="10" y2="0" />
+        <line class="wire signal" x1="0" y1="-10" x2="0" y2="10" />
+      </g>
+    </svg>
+    <div class="bg-nodes" id="bgNodes"></div>
+  </div>
 
   <main class="profile-card">
     <section class="profile-box">
+      <div class="status-strip" aria-hidden="true">
+        <div class="status-left">
+          <span class="led"></span>
+          <span>SYS ONLINE</span>
+          <span style="opacity:0.65">/ CTRL LOOP</span>
+        </div>
+        <div class="meters">
+          <span class="meter"></span>
+          <span class="meter"></span>
+          <span class="meter"></span>
+          <span class="meter"></span>
+          <span class="meter"></span>
+          <span class="meter"></span>
+        </div>
+      </div>
+
       <img src="./shekari.jpg" alt="Aidin Shekari" class="profile-avatar"/>
       <div class="bio">
         <h1 class="profile-name">Aidin Shekari</h1>
@@ -223,12 +557,12 @@
 
       <!-- Socials BELOW bio -->
       <div class="social-bar">
-        <a href="https://github.com/AidinShekari" target="_blank"><i class="fa fa-github"></i></a>
-        <a href="https://blog.shekari.me" target="_blank"><i class="fa fa-rss"></i></a>
-        <a href="https://www.linkedin.com/in/Aidin-Shekari/" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a href="mailto:personal@shekari.me" target="_blank"><i class="fa fa-envelope"></i></a>
-        <a href="https://t.me/Ai_Shekari" target="_blank"><i class="fa fa-telegram"></i></a>
-        <a href="https://instagram.com/Ai_.Shekari" target="_blank"><i class="fa fa-instagram"></i></a>
+        <a href="https://github.com/AidinShekari" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github"></i></a>
+        <a href="https://blog.shekari.me" target="_blank" rel="noopener noreferrer" aria-label="Blog"><i class="fa fa-rss"></i></a>
+        <a href="https://www.linkedin.com/in/Aidin-Shekari/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+        <a href="mailto:personal@shekari.me" aria-label="Email"><i class="fa fa-envelope"></i></a>
+        <a href="https://t.me/Ai_Shekari" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa fa-telegram"></i></a>
+        <a href="https://instagram.com/Ai_.Shekari" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
       </div>
     </section>
   </main>
@@ -237,14 +571,39 @@
   <div class="cursor-outer"></div>
   <div class="cursor-inner"></div>
   <script>
+    // Lightweight "electronics lab" background nodes
+    (function initNodes() {
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const container = document.getElementById('bgNodes');
+      if (!container || prefersReduced) return;
+
+      const count = Math.min(42, Math.max(24, Math.floor(window.innerWidth / 38)));
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.className = 'node';
+        el.style.left = Math.random() * 100 + '%';
+        el.style.top = Math.random() * 100 + '%';
+        el.style.animationDelay = (Math.random() * 3.5).toFixed(2) + 's';
+        el.style.opacity = (0.25 + Math.random() * 0.55).toFixed(2);
+        const size = 3 + Math.random() * 6;
+        el.style.width = size.toFixed(0) + 'px';
+        el.style.height = size.toFixed(0) + 'px';
+        container.appendChild(el);
+      }
+    })();
+
+    // Custom oscilloscope-ish cursor
     const cursor = document.querySelector(".cursor-inner");
     const cursor2 = document.querySelector(".cursor-outer");
-    document.addEventListener("mousemove", e=>{
-      cursor.style.top = e.pageY + "px";
-      cursor.style.left = e.pageX + "px";
-      cursor2.style.top = e.pageY + "px";
-      cursor2.style.left = e.pageX + "px";
-    })
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMotion) {
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.top = e.pageY + "px";
+        cursor.style.left = e.pageX + "px";
+        cursor2.style.top = e.pageY + "px";
+        cursor2.style.left = e.pageX + "px";
+      });
+    }
   </script>
 </body>
 </html>
